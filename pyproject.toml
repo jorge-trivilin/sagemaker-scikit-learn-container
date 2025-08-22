@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "sagemaker-sklearn-container"
+version = "2.0.0"
+description = "Open source library for creating SciKit-Learn containers to run on Amazon SageMaker."
+authors = ["Amazon Web Services"]
+license = "Apache-2.0"
+readme = "README.rst"
+packages = [{include = "sagemaker_sklearn_container", from = "src"}]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+# Add your main dependencies from requirements.txt here
+# These would need to be added based on your requirements.txt file
+sagemaker-inference = "*"
+numpy = "*"
+
+[tool.poetry.group.test.dependencies]
+Flask = "*"
+PyYAML = "*"
+boto3 = ">=1.24.17"
+coverage = "*"
+docker-compose = "*"
+flake8 = "*"
+mock = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+python-dateutil = "2.8.1"
+requests = ">=2.23.0"
+sagemaker = ">=1.3.0,<2"
+tox = "*"
+
+[tool.poetry.scripts]
+serve = "sagemaker_sklearn_container.serving:serving_entrypoint"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/aws/amazon-sagemaker-sklearn-container/issues"
+"Documentation" = "https://github.com/aws/amazon-sagemaker-sklearn-container"
+"Source Code" = "https://github.com/aws/amazon-sagemaker-sklearn-container"
+
+# Optional: Poetry configuration
+[tool.poetry.extras]
+test = [
+    "Flask",
+    "PyYAML", 
+    "boto3",
+    "coverage",
+    "docker-compose",
+    "flake8",
+    "mock",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "python-dateutil",
+    "requests",
+    "sagemaker",
+    "tox"
+]
